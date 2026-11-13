@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="description" content="怡珮電繪課教學影片的版型設計。選一格畫面，再選一個 LOGO，直接看它放在影片裡的樣子。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="怡珮電繪課 影片版型與 LOGO">
+<meta property="og:description" content="教學影片的版型設計。選一格畫面，再選一個 LOGO，直接看它放在影片裡的樣子。">
+<meta property="og:url" content="https://kunder-lin.github.io/yijpei-video-template/">
+<meta property="og:image" content="https://kunder-lin.github.io/yijpei-video-template/cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kunder-lin.github.io/yijpei-video-template/cover.jpg">
+<title>怡珮電繪課 影片版型與 LOGO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* 版面：左邊是 16:9 的影片畫面、畫面列與說明；右邊是 LOGO 選單。窄螢幕改成上下排。配色與字體沿用影片版型。 */
+  --paper: #fff8fa;
+  --ink: #582640;
+  --ink2: #73465a;
+  --gold: #b38c4a;
+  --rose: #f6e3ea;
+  --line: #e7d5dc;
+  --card: #ffffff;
+  --display: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
+  --body: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.6; }
+.wrap { max-width: 1560px; margin: 0 auto; padding: 28px 24px 48px; display: grid; gap: 24px; }
+header { display: grid; gap: 6px; align-content: center; min-height: 268px; padding: 30px 36px; border-radius: 8px; border: 1px solid var(--line); background: var(--paper) url("hero.jpg") left 30% / cover no-repeat; }
+.brand { font-family: Georgia, "Times New Roman", serif; letter-spacing: .32em; font-size: 14px; color: var(--ink2); }
+.brand span { font-family: var(--display); letter-spacing: .28em; margin-left: 1.2em; }
+h1 { font-family: var(--display); font-weight: 900; font-size: clamp(26px, 3.2vw, 40px); line-height: 1.25; margin: 0; text-wrap: balance; }
+.lead { margin: 0; max-width: 21em; color: var(--ink2); }
+.rule { width: 72px; height: 3px; background: var(--gold); margin: 6px 0 2px; }
+
+main { display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 28px; align-items: start; }
+.left { display: grid; gap: 14px; min-width: 0; }
+
+.stage { --scale: 1; --dx: 0; --dy: 0; --s: 0px; position: relative; aspect-ratio: 16 / 9; background: #e9dbe1; border-radius: 6px; overflow: hidden; box-shadow: 0 14px 40px rgba(88, 38, 64, .18); }
+.stage .frame { width: 100%; height: 100%; display: block; object-fit: cover; }
+.stage .logo { position: absolute; width: auto; object-fit: contain; cursor: grab; touch-action: none; user-select: none; -webkit-user-drag: none; }
+.stage .logo:active { cursor: grabbing; }
+.stage .logo.stroke { filter: drop-shadow(var(--s) 0 0 #fff) drop-shadow(calc(var(--s) * -1) 0 0 #fff) drop-shadow(0 var(--s) 0 #fff) drop-shadow(0 calc(var(--s) * -1) 0 #fff) drop-shadow(calc(var(--s) * .5) calc(var(--s) * .5) 0 #fff) drop-shadow(calc(var(--s) * -.5) calc(var(--s) * -.5) 0 #fff); }
+.stage .logo[hidden] { display: none; }
+.stage .logo.tr { top: calc(3.3% + var(--dy) * 1%); right: calc(2.9% - var(--dx) * 1%); height: calc(8.2% * var(--scale)); max-width: 60%; object-position: right top; }
+.stage .logo.tro { top: calc(3.3% + var(--dy) * 1%); right: calc(6.6% - var(--dx) * 1%); height: calc(8.2% * var(--scale)); max-width: 60%; object-position: right top; }
+.stage .logo.tl { top: calc(7.4% + var(--dy) * 1%); left: calc(5% + var(--dx) * 1%); height: calc(12% * var(--scale)); max-width: 60%; object-position: left top; }
+
+.now { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: baseline; }
+.now b { font-family: var(--display); font-size: 20px; }
+.now .pick { color: var(--ink2); }
+.cap { margin: 0; color: var(--ink2); max-width: 60em; }
+
+.strip { display: grid; grid-auto-flow: column; grid-auto-columns: 136px; gap: 10px; overflow-x: auto; padding: 2px 2px 8px; }
+.strip button { all: unset; cursor: pointer; display: grid; gap: 5px; padding: 5px; border-radius: 6px; border: 2px solid transparent; }
+.strip img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 3px; display: block; }
+.strip span { font-size: 13px; line-height: 1.3; color: var(--ink2); }
+.strip button[aria-pressed="true"] { border-color: var(--ink); background: var(--rose); }
+.strip button[aria-pressed="true"] span { color: var(--ink); font-weight: 700; }
+
+.panel { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 16px; display: grid; gap: 14px; max-height: calc(100vh - 40px); overflow-y: auto; position: sticky; top: 20px; }
+.panel h2 { font-family: var(--display); font-size: 20px; margin: 0; }
+.size { display: grid; grid-template-columns: auto 1fr auto; gap: 10px; align-items: center; font-size: 14px; color: var(--ink2); }
+.size input { accent-color: var(--ink); width: 100%; }
+.size span { min-width: 3.2em; text-align: right; font-variant-numeric: tabular-nums; }
+.ctl { display: grid; gap: 8px; }
+.ctl .row { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; font-size: 13px; color: var(--ink2); }
+.btn { all: unset; cursor: pointer; padding: 5px 12px; border: 1px solid var(--ink); border-radius: 4px; color: var(--ink); font-size: 13px; }
+.btn:hover { background: var(--rose); }
+.group { display: grid; gap: 8px; }
+.group h3 { font-size: 13px; font-weight: 700; letter-spacing: .08em; color: var(--gold); margin: 4px 0 0; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(108px, 1fr)); gap: 8px; }
+.tiles button { all: unset; cursor: pointer; display: grid; grid-template-rows: 50px auto; gap: 4px; padding: 8px 6px 6px; border: 1px solid var(--line); border-radius: 6px; background: var(--card); text-align: center; }
+.tiles img { width: 100%; height: 50px; object-fit: contain; }
+.tiles .none { display: grid; place-items: center; height: 50px; color: var(--ink2); font-size: 13px; }
+.tiles span { font-size: 12px; line-height: 1.3; color: var(--ink2); }
+.tiles span b { color: var(--ink); font-size: 14px; margin-right: 4px; }
+.tiles button[aria-pressed="true"] { border: 2px solid var(--ink); background: var(--rose); padding: 7px 5px 5px; }
+button:focus-visible, input:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+
+footer { color: var(--ink2); font-size: 14px; border-top: 1px solid var(--line); padding-top: 14px; display: grid; gap: 4px; max-width: 70em; }
+footer p { margin: 0; }
+
+@media (max-width: 1040px) {
+  main { grid-template-columns: minmax(0, 1fr); }
+  .panel { position: static; max-height: none; }
+}
+@media (max-width: 480px) {
+  .wrap { padding: 20px 16px 36px; }
+  header { min-height: 220px; padding: 22px 20px; }
+  .strip { grid-auto-columns: 112px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">YIJ-PEI ART<span>怡珮電繪課</span></div>
+    <h1>影片版型與 LOGO 搭配</h1>
+    <div class="rule"></div>
+    <p class="lead">這一頁放的是教學影片的版型設計。選一格畫面，再選一個 LOGO，直接看它放在影片裡的樣子。</p>
+  </header>
+
+  <main>
+    <section class="left" aria-label="影片畫面">
+      <div class="stage" id="stage">
+        <img class="frame" id="frame" alt="">
+        <img class="logo tr" id="logo" alt="">
+      </div>
+      <div class="now">
+        <b id="frameName"></b>
+        <span class="pick" id="logoName"></span>
+      </div>
+      <p class="cap" id="cap"></p>
+      <div class="strip" id="strip" role="group" aria-label="選一格畫面"></div>
+    </section>
+
+    <aside class="panel" aria-label="選 LOGO">
+      <h2>選一個 LOGO</h2>
+      <div class="ctl">
+        <label class="size" for="size">大小 <input type="range" id="size" min="50" max="260" value="120" step="5"> <span id="sizeOut">120%</span></label>
+        <label class="size" for="dx">左右 <input type="range" id="dx" min="-95" max="95" value="0" step="0.5"> <span id="dxOut">0</span></label>
+        <label class="size" for="dy">上下 <input type="range" id="dy" min="-8" max="90" value="0" step="0.5"> <span id="dyOut">0</span></label>
+        <label class="size" for="stroke">白框 <input type="range" id="stroke" min="0" max="10" value="0" step="1"> <span id="strokeOut">無</span></label>
+        <div class="row"><button type="button" class="btn" id="reset">大小、位置、白框回到預設</button><span>也可以直接拖畫面上的 LOGO</span></div>
+      </div>
+      <div id="groups"></div>
+    </aside>
+  </main>
+
+  <footer>
+    <p>畫面是第 1 章 1-1「構圖在決定什麼」的版型預覽，影片還沒輸出。封面和段落進場的 LOGO 放在左上原本品牌字的位置，其他畫面放在右上角。</p>
+    <p>LOGO 都是挑風格用的草樣，挑定之後會重新做成正式商標。1～36 號取自三張風格總覽，字母代號是前幾輪的提案。</p>
+  </footer>
+</div>
+
+<script>
+const FRAMES = [
+  { id: "f01", name: "封面", pos: "tl", cap: "作品滿版，左側暖白漸層放品牌、章節、課名、副標。講到「這件事，就叫做構圖」時，課名底下畫出一條金線。" },
+  { id: "f02", name: "理論總覽板", pos: "tr", cap: "先交代有哪幾件事：四張小圖並排，各有編號、名稱、一句說明，講到哪一張才出現。左上是章節標籤。" },
+  { id: "f03", name: "段落進場", pos: "tl", cap: "換主題時，左側暖白漸層滑進來：霧金數字、大標題、副標、英文小字。停幾秒後退場，留下左上角的章節標籤。" },
+  { id: "f04", name: "圖上標註", pos: "tr", cap: "圖滿版、不加框。白圈圈出重點，細線連到說明牌。" },
+  { id: "f05", name: "並排比較", pos: "tr", cap: "三張圖並排看差別，底下一條 POINT 提示。" },
+  { id: "f06", name: "標註加提示", pos: "tr", cap: "說明牌是明體標題加一行說明；POINT 是深莓紫標籤加暖白牌子；字幕在下方中央，兩端各一個小金菱形。" },
+  { id: "f07", name: "多個標註", pos: "tr", cap: "左右各一塊說明牌，底下一支蹺蹺板表示左右的份量平衡。" },
+  { id: "f08", name: "老師的作品", pos: "tro", cap: "回到老師的作品：取景角框出主角，白圈標出焦點。作品不是 16:9，右邊留一條書背。" },
+  { id: "f09", name: "作品的平衡", pos: "tro", cap: "一條中線、左右兩塊說明牌、一條 POINT 提示。" },
+  { id: "f10", name: "小結", pos: "tr", cap: "總覽板再出現一次，最後一塊「下一堂」的牌子。" }
+];
+const N = ["動漫標題字", "優雅襯線", "毛筆筆觸", "筆壓細線", "幾何粗體加筆", "復古少女漫畫", "輕小說斜體", "像素漸變", "麥克筆手寫", "單線霓虹", "圓形徽章", "黑板粉筆",
+  "科幻介面", "水彩暈染", "奇幻遊戲標題", "小寫字加筆", "方印", "貼紙", "漫畫狀聲字", "緞帶連寫", "光澤圖示", "紙雕疊層", "新藝術海報", "極簡文具",
+  "粗襯線", "裝飾藝術", "圓胖字", "圖層圖示", "模板雙色", "書本", "花瓣", "多線字", "寶石", "剪紙手寫", "重疊方框", "立體字"];
+const num = (from, to) => Array.from({ length: to - from + 1 }, (_, i) => ({ id: "n" + String(from + i).padStart(2, "0"), code: String(from + i), name: N[from + i - 1] }));
+const GROUPS = [
+  { title: "風格總覽 1～12", items: num(1, 12) },
+  { title: "風格總覽 13～24", items: num(13, 24) },
+  { title: "風格總覽 25～36", items: num(25, 36) },
+  { title: "英文設計字 U～Y", items: [["U", "M 的字減裝飾"], ["V", "N 的字雙色"], ["W", "優雅曲線"], ["X", "筆壓線條"], ["Y", "尖角斜體"]] },
+  { title: "遊戲標題風 L～O", items: [["L", "漸層字加筆"], ["M", "標題字與筆"], ["N", "羽翼與筆"], ["O", "花冠與筆"]] },
+  { title: "簡潔版 P～T", items: [["P", "筆與筆觸"], ["Q", "連字號是筆"], ["R", "筆與星芒"], ["S", "眼睛線條"], ["T", "明體加筆"]] },
+  { title: "可愛風 F～J", items: [["F", "繪圖板與書"], ["G", "吉祥物"], ["H", "動漫眼睛"], ["I", "播放鍵與筆"], ["J", "圓體字標"]] },
+  { title: "第一輪 A～E", items: [["A", "花押字"], ["B", "印章"], ["C", "玫瑰與筆"], ["D", "簽名體"], ["E", "印章排版"]] }
+].map(g => ({ title: g.title, items: g.items.map(it => Array.isArray(it) ? { id: it[0], code: it[0], name: it[1] } : it) }));
+const LOGOS = GROUPS.flatMap(g => g.items);
+
+const $ = id => document.getElementById(id);
+let state = { frame: "f06", logo: "n01", size: 120, dx: 0, dy: 0, stroke: 0 };
+const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, Math.round(v * 2) / 2));
+try { Object.assign(state, JSON.parse(localStorage.getItem("yijpei-logo-try") || "{}")); } catch (e) { /* 沒有儲存空間也照常顯示 */ }
+if (!FRAMES.some(f => f.id === state.frame)) state.frame = "f06";
+if (state.logo && !LOGOS.some(l => l.id === state.logo)) state.logo = "n01";
+
+function tile(item) {
+  const b = document.createElement("button");
+  b.type = "button";
+  b.dataset.logo = item ? item.id : "";
+  if (item) {
+    const img = document.createElement("img");
+    img.src = "logos/" + item.id + ".png";
+    img.alt = "";
+    img.loading = "lazy";
+    b.append(img);
+    const s = document.createElement("span");
+    s.innerHTML = "<b>" + item.code + "</b>" + item.name;
+    b.append(s);
+    b.setAttribute("aria-label", item.code + " " + item.name);
+  } else {
+    const d = document.createElement("div");
+    d.className = "none";
+    d.textContent = "不放 LOGO";
+    b.append(d, document.createElement("span"));
+  }
+  b.addEventListener("click", () => { state.logo = b.dataset.logo; draw(); });
+  return b;
+}
+
+function build() {
+  FRAMES.forEach(f => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.dataset.frame = f.id;
+    const img = document.createElement("img");
+    img.src = "frames/" + f.id + ".jpg";
+    img.alt = "";
+    const s = document.createElement("span");
+    s.textContent = f.name;
+    b.append(img, s);
+    b.addEventListener("click", () => { state.frame = f.id; draw(); });
+    $("strip").append(b);
+  });
+  GROUPS.forEach((g, gi) => {
+    const sec = document.createElement("div");
+    sec.className = "group";
+    const h = document.createElement("h3");
+    h.textContent = g.title;
+    const grid = document.createElement("div");
+    grid.className = "tiles";
+    if (gi === 0) grid.append(tile(null));
+    g.items.forEach(it => grid.append(tile(it)));
+    sec.append(h, grid);
+    $("groups").append(sec);
+  });
+  $("size").addEventListener("input", e => { state.size = +e.target.value; draw(); });
+  $("dx").addEventListener("input", e => { state.dx = +e.target.value; draw(); });
+  $("dy").addEventListener("input", e => { state.dy = +e.target.value; draw(); });
+  $("stroke").addEventListener("input", e => { state.stroke = +e.target.value; draw(); });
+  $("reset").addEventListener("click", () => { state.size = 120; state.dx = 0; state.dy = 0; state.stroke = 0; draw(); });
+  window.addEventListener("resize", draw);                  // 白框的粗細跟著畫面大小算，視窗變了要重算
+  const logo = $("logo");                                   // 直接拖 LOGO：位移換算成畫面寬高的百分比
+  let drag = null;
+  logo.addEventListener("pointerdown", e => {
+    drag = { x: e.clientX, y: e.clientY, dx: state.dx, dy: state.dy };
+    logo.setPointerCapture(e.pointerId);
+    e.preventDefault();
+  });
+  logo.addEventListener("pointermove", e => {
+    if (!drag) return;
+    const r = $("stage").getBoundingClientRect();
+    state.dx = clamp(drag.dx + (e.clientX - drag.x) / r.width * 100, -95, 95);
+    state.dy = clamp(drag.dy + (e.clientY - drag.y) / r.height * 100, -8, 90);
+    draw();
+  });
+  ["pointerup", "pointercancel"].forEach(t => logo.addEventListener(t, () => { drag = null; }));
+}
+
+function draw() {
+  const f = FRAMES.find(x => x.id === state.frame);
+  const l = LOGOS.find(x => x.id === state.logo);
+  $("frame").src = "frames/" + f.id + ".jpg";
+  $("frame").alt = f.name + "的畫面";
+  const logo = $("logo");
+  logo.className = "logo " + f.pos;
+  logo.hidden = !l;
+  if (l) { logo.src = "logos/" + l.id + ".png"; logo.alt = "LOGO " + l.code; }
+  $("stage").style.setProperty("--scale", state.size / 100);
+  $("stage").style.setProperty("--dx", state.dx);
+  $("stage").style.setProperty("--dy", state.dy);
+  $("size").value = state.size;
+  $("sizeOut").textContent = state.size + "%";
+  $("dx").value = state.dx;
+  $("dxOut").textContent = state.dx;
+  $("dy").value = state.dy;
+  $("dyOut").textContent = state.dy;
+  logo.classList.toggle("stroke", state.stroke > 0);        // 白框：以 1920 寬的影片來說，每一級是 1.5 像素
+  $("stage").style.setProperty("--s", Math.max(0.6, state.stroke * 1.5 * $("stage").clientWidth / 1920) + "px");
+  $("stroke").value = state.stroke;
+  $("strokeOut").textContent = state.stroke ? state.stroke : "無";
+  $("frameName").textContent = f.name;
+  $("logoName").textContent = l ? "LOGO：" + l.code + (/^\d/.test(l.code) ? " 號　" : "　") + l.name : "沒有放 LOGO";
+  $("cap").textContent = f.cap;
+  document.querySelectorAll("#strip button").forEach(b => b.setAttribute("aria-pressed", b.dataset.frame === state.frame));
+  document.querySelectorAll(".tiles button").forEach(b => b.setAttribute("aria-pressed", b.dataset.logo === (state.logo || "")));
+  try { localStorage.setItem("yijpei-logo-try", JSON.stringify(state)); } catch (e) { /* 存不了就算了 */ }
+}
+
+build();
+draw();
+</script>
+</body>
+</html>
